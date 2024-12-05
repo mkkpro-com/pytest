@@ -57,7 +57,7 @@ jobs:
      run: ls -R
 
    - name: Upload Artifact
-     uses: actions/upload-artifact@v3
+     uses: actions/upload-artifact@v4
      with:
        name: docker-scout-findings
        path: scout-report.sarif
