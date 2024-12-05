@@ -53,14 +53,18 @@ jobs:
        docker scout quickview
        docker scout cves
        
-   - name: List all files in workspace
-     run: ls -R
-
    - name: Upload Artifact
-     uses: actions/upload-artifact@v4
+     uses: actions/upload-artifact@v3
      with:
-       name: docker-scout-findings
-       path: scout-report.sarif
+          name: docker-scout-findings
+          path: scout-report.sarif
+          if-no-files-found: warn
+          compression-level: 6
+          overwrite: false
+          include-hidden-files: false
+     env:
+          DOCKER_CONFIG: /home/runner/.docker
+          DOCKER_CLI_EXPERIMENTAL: enabled
       
 
    
